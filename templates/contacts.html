@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body %}
+<body>
+    <form action="" method="post">
+			<fieldset class="border">
+				<legend>Зарегистрируйтесь</legend>
+				<p>
+					<label class="title" for="email">Ваше имя:</label>
+					 <input type="text" name="name" id="name" width="50px"><br />
+					 <label class="title" for="email">Ваш email:</label>
+					 <input type="text" name="email" id="email"></p>
+				<p><label for="location" class="title">Ближайший центр:</label>
+					 <select name="location" id="location">
+						 <option value="ny">Москва</option>
+						 <option value="il">Санкт-Петербург</option>
+						 <option value="ca">Екатеринбург</option>
+					 </select></p>
+				<span class="title">Являетесь участником?</span>
+				<label><input class="form-check-input" type="radio" name="member" value="yes" /> Да</label>
+				<label><input class="form-check-input" type="radio" name="member" value="no" /> Нет</label></p>
+			</fieldset>
+ 	    <div class="submit"><input class="btn btn-info" type="submit" value="Регистрация" /></div>
+		</form>
+</body>
+{% endblock %}

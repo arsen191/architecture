@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+<body>
+    <form action="" method="post">
+			<fieldset class="border">
+				<p><label for="name" class="title">Выберите категорию:</label>
+					 <select name="name" id="name">
+						 <option value="Python">Python</option>
+						 <option value="Java">Java</option>
+						 <option value="JS">JS</option>
+					 </select></p>
+			</fieldset>
+ 	    <div class="submit"><input class="btn btn-info" type="submit" value="Создать" /></div>
+		</form>
+</body>
+{% endblock %}

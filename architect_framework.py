@@ -1,5 +1,4 @@
 import quopri
-
 from front_controller import fronts_lst
 from views import not_found_view
 from urls import routes
@@ -11,14 +10,15 @@ class Application:
         self.fronts = fronts
 
     def __call__(self, environ, start_response):
+        data = None
         path = environ.get('PATH_INFO')
         query_string = environ.get('QUERY_STRING')
         request_method = environ.get('REQUEST_METHOD')
         if request_method == 'GET':
-            print(Application.parse_params(query_string))
+            data = Application.parse_params(query_string)
         elif request_method == 'POST':
             post_data = Application.get_post_data(environ)
-            print(Application.parse_post_data(post_data))
+            data = Application.parse_post_data(post_data)
         if not path.endswith('/'):
             path += '/'
 
@@ -28,10 +28,10 @@ class Application:
             view = not_found_view
         request = {}
         for front in self.fronts:
-            front(request)
+            front(request, environ, data)
         code, body = view(request)
         start_response(code, [('Content-Type', 'text/html')])
-        return body
+        return [body.encode('utf-8')]
 
     @staticmethod
     def parse_params(query):
